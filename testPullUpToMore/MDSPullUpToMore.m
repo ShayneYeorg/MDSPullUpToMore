@@ -114,7 +114,7 @@ typedef NSUInteger MDSPullUpToMoreState;
 }
 
 - (void)setSelfFrame {
-    CGFloat y=self.scrollView.contentSize.height;
+    CGFloat y = self.scrollView.contentSize.height;
     self.frame = CGRectMake(0, y, self.scrollView.bounds.size.width, 60);
 }
 
@@ -156,14 +156,14 @@ typedef NSUInteger MDSPullUpToMoreState;
     state = newState;
     switch (newState) {
         case MDSPullUpToMoreStateHidden:
-            titleLabel.text = NSLocalizedString(@"上拉加载更多笔记...",);
+            titleLabel.text = NSLocalizedString(@"上拉加载更多笔记...       ",);
             [self.pullAnimationView stopAnimation];
             [self setScrollViewContentInset:self.originalScrollViewContentInset];
             break;
             
         case MDSPullUpToMoreStateNoMore:
             if (self.noRecordTip == nil) {
-                titleLabel.text = NSLocalizedString(@"无更多笔记",);
+                titleLabel.text = NSLocalizedString(@"无更多笔记        ",);
             } else {
                 titleLabel.text = NSLocalizedString(self.noRecordTip,);
             }
@@ -186,7 +186,7 @@ typedef NSUInteger MDSPullUpToMoreState;
     
     CGRect titleFrame = self.titleLabel.frame;
     [self.titleLabel sizeToFit];
-    titleFrame.origin.x = (self.bounds.size.width - self.titleLabel.bounds.size.width)/2 + 10;
+    titleFrame.origin.x = (self.bounds.size.width - self.titleLabel.bounds.size.width)/2 + 15;
     self.titleLabel.frame = titleFrame;
     
     CGRect animationViewFrame = self.pullAnimationView.frame;

@@ -27,16 +27,13 @@
     [self configScrollView];
 }
 
-- (void)configScrollView {
-    self.scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
-    [self.scrollView setContentSize:CGSizeMake(0, self.scrollView.frame.size.height+0.5)];
-    self.scrollView.delegate = self;
-    [self.view addSubview:self.scrollView];
-    
-    UIView *testView = [[UIView alloc]initWithFrame:self.scrollView.frame];
-    testView.backgroundColor = [UIColor grayColor];
-    [self.scrollView addSubview:testView];
-    
+/*
+ 要将第2步的代码放在viewDidAppear:方法内：
+ 因为控件会根据scrollView.contentSize.height是否大于scrollView.height来判断要不要显示控件（内容不满屏不显示控件）；
+ 如果用UITableView来使用控件，在viewDidAppear:方法里就可以保证tableView的contentSize.height肯定会是最终值；
+ 在其他的Life Cycle方法里tableView的contentSize.height有可能还是0，这样会导致第一次上拉的时候控件不显示。
+ */
+- (void)viewDidAppear:(BOOL)animated {
     //第2步：为UIScrollView或UIScrollView的子类添加操作块
     __weak ViewController *weakSelf = self;
     [self.scrollView addPullUpToMoreWithActionHandler:^{
@@ -49,7 +46,17 @@
             //weakSelf.scrollView.pullUpToMoreView.canMore = NO;
         });
     }];
+}
+
+- (void)configScrollView {
+    self.scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
+    [self.scrollView setContentSize:CGSizeMake(0, self.scrollView.frame.size.height+0.5)];
+    self.scrollView.delegate = self;
+    [self.view addSubview:self.scrollView];
     
+    UIView *testView = [[UIView alloc]initWithFrame:self.scrollView.frame];
+    testView.backgroundColor = [UIColor grayColor];
+    [self.scrollView addSubview:testView];
 }
 
 #pragma mark - UIScrollViewDelegate
