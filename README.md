@@ -1,2 +1,3 @@
 # MDSPullUpToMore
-上拉加载更多控件。
+这个demo演示了一个将供给Meditashayne项目使用的上拉加载更多控件，代码里有注释详细说明使用方法。
+
