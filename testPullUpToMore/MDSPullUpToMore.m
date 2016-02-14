@@ -147,7 +147,7 @@ typedef NSUInteger MDSPullUpToMoreState;
     
     self.hidden = NO;
     if (self.scrollView.contentSize.height < self.scrollView.frame.size.height) {
-        self.hidden = YES;
+        self.hidden = YES;//数据不满屏则不显示控件
         return;
     }
     if (self.state == newState) {
