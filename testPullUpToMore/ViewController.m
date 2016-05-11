@@ -4,7 +4,7 @@
 //
 //  Created by 杨淳引 on 16/2/3.
 //  Copyright © 2016年 shayneyeorg. All rights reserved.
-//
+//测试命令行使用github
 
 //  分4步来使用这个控件
 
